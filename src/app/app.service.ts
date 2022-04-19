@@ -17,4 +17,9 @@ export class AppService {
     let statURL = 'https://master-covid-19-api-laeyoung.endpoint.ainize.ai/jhu-edu/brief';
     return this.http.get<any>(statURL, this.httpOption);
   }
+
+  public getRegions() {
+    let regionURL = 'https://master-covid-19-api-laeyoung.endpoint.ainize.ai/jhu-edu/latest';
+    return this.http.get<any>(regionURL, this.httpOption);
+  }
 }

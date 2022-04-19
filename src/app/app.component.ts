@@ -9,6 +9,8 @@ import { AppService } from './app.service';
 export class AppComponent {
   title = 'CoronaInfo';
   public stats: any;
+  public regions: any;
+  public country: any;
 
   constructor(private appService: AppService) { }
 
@@ -18,5 +20,13 @@ export class AppComponent {
     this.appService.getStats().subscribe((data) => {
       this.stats = data;
     })
+    this.appService.getRegions().subscribe((data => {
+      this.regions = data;
+    }))
   }
+
+  public getCountry(country: any) {
+    this.country = country;
+  }
+
 }
