@@ -15,12 +15,12 @@ export class ChartService {
   legendTitleSubject = new Subject<string>();
 
   timeseries: any;
-  countryData!: any;
+  countryDATA!: any;
+  countryDATASubject =new Subject<any>();
+
   constructor(private appService: AppService) {
     this.appService.getTimeseries().subscribe((data) => {
       this.timeseries = data;
-      console.log(this.timeseries);
-      console.log(data);
     });
 
     this.view = [900, 400];
@@ -30,24 +30,24 @@ export class ChartService {
   }
 
   setData(countryName: string) {
-    this.countryData = this.timeseries.filter((event: any) => {
-      return (event.countryregion = countryName);
+    this.countryDATA = this.timeseries.filter((event: any) => {
+      return (event.countryregion == countryName);
     })[0];
 
-    var dateArray=Object.getOwnPropertyNames(this.countryData.timeseries)
+    var dateArray=Object.getOwnPropertyNames(this.countryDATA.timeseries)
     var confirmedSeries :any[]=[];
     var deathsSeries:any[]=[];
     var recoveredSeries:any[]=[];
     dateArray.forEach((element:any)=>{
-      confirmedSeries.push({'value':this.countryData.timeseries.element.confirmed,'name':element})
+      confirmedSeries.push({value:this.countryDATA.timeseries[element].confirmed,name:element})
     })
     dateArray.forEach((element:any)=>{
-      deathsSeries.push({value:this.countryData.timeseries.element.deaths,name:element})
+      deathsSeries.push({value:this.countryDATA.timeseries[element].deaths,name:element})
     })
     dateArray.forEach((element:any)=>{
-      recoveredSeries.push({value:this.countryData.timeseries.element.recovered,name:element})
+      recoveredSeries.push({value:this.countryDATA.timeseries[element].recovered,name:element})
     })
-    this.countryData= [
+    this.countryDATA= [
       {
         name: 'confirmed',
         series: confirmedSeries
@@ -61,10 +61,12 @@ export class ChartService {
         series: recoveredSeries
       },
     ];
-    console.log(confirmedSeries)
+    // console.log('hahaha')
+    // console.log(this.countryDATA)
+    this.countryDATASubject.next(this.countryDATA)
   }
   getData() {
-
+    return this.countryDATA
   }
 
   setView(view: [number, number]) {

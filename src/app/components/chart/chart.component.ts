@@ -13,17 +13,13 @@ export class ChartComponent implements OnInit {
   @ViewChild('someTag') myDiv!: ElementRef;
   view!:[number,number];
   legend!:boolean;
-  legendTitle=this.chartService.getLegendTitle()
-  countryDATA!:any[]
+  legendTitle:any
+  countryDATA:any[]
 
   constructor(private dialog:MatDialog,
     private chartService:ChartService){
-    console.log('dang o chart component')
 
 
-    this.view=chartService.view
-    this.legendTitle=chartService.legendTitle
-    this.legend=chartService.legend
 
     chartService.legendSubject.subscribe((event:any)=>{
       this.legend=event
@@ -31,9 +27,19 @@ export class ChartComponent implements OnInit {
     chartService.legendTitleSubject.subscribe((event:any)=>{
       this.legendTitle=event
     })
+    chartService.countryDATASubject.subscribe((event:any)=>{
+      this.countryDATA=event
+
+      // console.log('da thay doi')
+      // console.log(this.countryDATA)
+    })
   }
   ngOnInit(): void {
+
+    this.countryDATA=this.chartService.countryDATA
+    this.view=this.chartService.view
     this.legendTitle=this.chartService.legendTitle
+    this.legend=this.chartService.legend
   }
 
   // config pop
