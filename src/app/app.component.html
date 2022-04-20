@@ -1,193 +1,188 @@
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous" />
-<div class="worldwide">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+  integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+  integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous" />
+
+<div class="container">
+  <div class="worldwide">
     <span>Worldwide</span>
     <div class="row">
-        <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-primary shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                Confirmed
-                            </div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                {{ stats.confirmed | number: "" }}
-                            </div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
-                        </div>
-                    </div>
+      <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-primary shadow h-100 py-2">
+          <div class="card-body">
+            <div class="row no-gutters align-items-center">
+              <div class="col mr-2">
+                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                  Confirmed
                 </div>
+                <div class="h5 mb-0 font-weight-bold text-gray-800">
+                  {{ stats.confirmed | number: "" }}
+                </div>
+              </div>
+              <div class="col-auto">
+                <i class="fas fa-user fa-2x text-gray-300"></i>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
 
-        <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-success shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                Recovered
-                            </div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                {{ stats.recovered }}
-                            </div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-                        </div>
-                    </div>
+      <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-success shadow h-100 py-2">
+          <div class="card-body">
+            <div class="row no-gutters align-items-center">
+              <div class="col mr-2">
+                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                  Recovered
                 </div>
+                <div class="h5 mb-0 font-weight-bold text-gray-800">
+                  {{ stats.recovered }}
+                </div>
+              </div>
+              <div class="col-auto">
+                <i class="fas fa-first-aid fa-2x text-gray-300"></i>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
 
-        <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-info shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
-                                Deaths
-                            </div>
-                            <div class="row no-gutters align-items-center">
-                                <div class="col-auto">
-                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
-                                        {{ stats.deaths | number: "" }}
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="progress progress-sm mr-2">
-                                        <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
-                        </div>
-                    </div>
+      <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-info shadow h-100 py-2">
+          <div class="card-body">
+            <div class="row no-gutters align-items-center">
+              <div class="col mr-2">
+                <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                  Deaths
                 </div>
+                <div class="row no-gutters align-items-center">
+                  <div class="col-auto">
+                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
+                      {{ stats.deaths | number: "" }}
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-auto">
+                <i class="fas fa-skull-crossbones fa-2x text-gray-300"></i>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
 
-        <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-warning shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                Fatality rate
-                            </div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                {{ stats.deaths / stats.confirmed | percent: ".2" }}
-                            </div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-comments fa-2x text-gray-300"></i>
-                        </div>
-                    </div>
+      <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-warning shadow h-100 py-2">
+          <div class="card-body">
+            <div class="row no-gutters align-items-center">
+              <div class="col mr-2">
+                <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                  Fatality rate
                 </div>
+                <div class="h5 mb-0 font-weight-bold text-gray-800">
+                  {{ stats.deaths / stats.confirmed | percent: ".2" }}
+                </div>
+              </div>
+              <div class="col-auto">
+                <i class="fas fa-percent fa-2x text-gray-300"></i>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
     </div>
-</div>
-<div class="regional">
+  </div>
+  <div class="regional">
     <span>Regional</span>
     <select [(ngModel)]="chosenCountryName" (ngModelChange)="selectCountryHandler()">
-    <option selected value="0">Select country</option>
-    <option *ngFor="let region of regions">{{ region.countryregion }}</option>
-  </select>
+      <option selected value="0">Select country</option>
+      <option *ngFor="let region of regions">{{ region.countryregion }}</option>
+    </select>
     <div class="row">
-        <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-primary shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                Confirmed
-                            </div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                {{ currentCountry.confirmed | number: "" }}
-                            </div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
-                        </div>
-                    </div>
+      <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-primary shadow h-100 py-2">
+          <div class="card-body">
+            <div class="row no-gutters align-items-center">
+              <div class="col mr-2">
+                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                  Confirmed
                 </div>
+                <div class="h5 mb-0 font-weight-bold text-gray-800">
+                  {{ currentCountry.confirmed | number: "" }}
+                </div>
+              </div>
+              <div class="col-auto">
+                <i class="fas fa-user fa-2x text-gray-300"></i>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
 
-        <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-success shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                Recovered
-                            </div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                {{ currentCountry.recovered }}
-                            </div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-                        </div>
-                    </div>
+      <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-success shadow h-100 py-2">
+          <div class="card-body">
+            <div class="row no-gutters align-items-center">
+              <div class="col mr-2">
+                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                  Recovered
                 </div>
+                <div class="h5 mb-0 font-weight-bold text-gray-800">
+                  {{ currentCountry.recovered }}
+                </div>
+              </div>
+              <div class="col-auto">
+                <i class="fas fa-first-aid fa-2x text-gray-300"></i>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
 
-        <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-info shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
-                                Deaths
-                            </div>
-                            <div class="row no-gutters align-items-center">
-                                <div class="col-auto">
-                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
-                                        {{ currentCountry.deaths | number: "" }}
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="progress progress-sm mr-2">
-                                        <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
-                        </div>
-                    </div>
+      <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-info shadow h-100 py-2">
+          <div class="card-body">
+            <div class="row no-gutters align-items-center">
+              <div class="col mr-2">
+                <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                  Deaths
                 </div>
+                <div class="row no-gutters align-items-center">
+                  <div class="col-auto">
+                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
+                      {{ currentCountry.deaths | number: "" }}
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-auto">
+                <i class="fas fa-skull-crossbones fa-2x text-gray-300"></i>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
 
-        <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-warning shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                Fatality rate
-                            </div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                {{ currentCountry.deaths / currentCountry.confirmed | percent:".2" }}
-                            </div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-comments fa-2x text-gray-300"></i>
-                        </div>
-                    </div>
+      <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-warning shadow h-100 py-2">
+          <div class="card-body">
+            <div class="row no-gutters align-items-center">
+              <div class="col mr-2">
+                <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                  Fatality rate
                 </div>
+                <div class="h5 mb-0 font-weight-bold text-gray-800">
+                  {{ currentCountry.deaths / currentCountry.confirmed | percent:".2" }}
+                </div>
+              </div>
+              <div class="col-auto">
+                <i class="fas fa-percent fa-2x text-gray-300"></i>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </div>
 <app-map></app-map>
