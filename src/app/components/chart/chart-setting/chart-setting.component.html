@@ -1,0 +1,8 @@
+<div class="container">
+    <input class="add" id="add" value="{{legendTitle}}" (change)="changeLegendTitle($event)">
+    <br>
+    <div>display legend:</div>
+    <input type="checkbox" [(ngModel)]="legend" (change)="changeLegend($event)" />
+
+    <button (click)="onClose()"> close </button>
+</div>

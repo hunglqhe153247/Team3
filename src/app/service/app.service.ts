@@ -23,7 +23,7 @@ export class AppService {
     return this.http.get<any>(regionURL, this.httpOption);
   }
 
-  public getTimeseries() {
+  public getTimeseries():Observable<any> {
     let timeseriesURL = 'https://master-covid-19-api-laeyoung.endpoint.ainize.ai/jhu-edu/timeseries?onlyCountries=true'
     return this.http.get<any>(timeseriesURL, this.httpOption);
   }

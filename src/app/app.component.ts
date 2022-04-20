@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { AppService } from './app.service';
+import { AppService } from './service/app.service';
+import { ChartService } from './service/chart.service';
 
 @Component({
   selector: 'app-root',
@@ -14,7 +15,7 @@ export class AppComponent {
   public timeseries: any;
   public chosenCountryName:any =0;
   public currentCountry:any;
-  constructor(private appService: AppService) { }
+  constructor(private appService: AppService, private chartService:ChartService) { }
 
   ngOnInit(): void {
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
@@ -49,6 +50,7 @@ export class AppComponent {
   selectCountryHandler(){
     this.currentCountry=this.regions.filter((event:any)=>{
       return event.countryregion==this.chosenCountryName
-    })[0]
+    })[0];
+    this.chartService.setData(this.chosenCountryName);
   }
 }
