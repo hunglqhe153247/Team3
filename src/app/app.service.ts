@@ -19,7 +19,12 @@ export class AppService {
   }
 
   public getRegions() {
-    let regionURL = 'https://master-covid-19-api-laeyoung.endpoint.ainize.ai/jhu-edu/latest';
+    let regionURL = 'https://master-covid-19-api-laeyoung.endpoint.ainize.ai/jhu-edu/latest?onlyCountries=true';
     return this.http.get<any>(regionURL, this.httpOption);
+  }
+
+  public getTimeseries() {
+    let timeseriesURL = 'https://master-covid-19-api-laeyoung.endpoint.ainize.ai/jhu-edu/timeseries?onlyCountries=true'
+    return this.http.get<any>(timeseriesURL, this.httpOption);
   }
 }
