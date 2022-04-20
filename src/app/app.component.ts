@@ -12,7 +12,8 @@ export class AppComponent {
   public regions: any;
   public country: any;
   public timeseries: any;
-
+  public chosenCountryName:any =0;
+  public currentCountry:any;
   constructor(private appService: AppService) { }
 
   ngOnInit(): void {
@@ -27,10 +28,27 @@ export class AppComponent {
     this.appService.getTimeseries().subscribe((data) => {
       this.timeseries = data;
     })
+
+    // initiate current country defaut value
+    this.currentCountry={
+      "countryregion":'',
+      "lastupdate":'',
+      "location":{},
+      "countrycode":{},
+      "confirmed":"",
+      "deaths":"",
+      "recovered":""
+    };
   }
 
   public getCountry(country: any) {
     this.country = country;
   }
 
+  // set current country = chosen country name
+  selectCountryHandler(){
+    this.currentCountry=this.regions.filter((event:any)=>{
+      return event.countryregion==this.chosenCountryName
+    })[0]
+  }
 }
