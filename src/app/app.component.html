@@ -1,5 +1,4 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous" />
 
 <div class="container">
     <div class="worldwide">
@@ -96,7 +95,8 @@
             <mat-label>Choose an option</mat-label>
             <mat-select [(ngModel)]="chosenCountryName" (ngModelChange)="selectCountryHandler()">
                 <mat-option selected value="0">Select country</mat-option>
-                <mat-option *ngFor="let region of regions" value={{region.countryregion}}>{{ region.countryregion }}</mat-option>
+                <mat-option *ngFor="let region of regions" value={{region.countryregion}}>{{ region.countryregion }}
+                </mat-option>
             </mat-select>
         </mat-form-field>
 
@@ -187,6 +187,15 @@
         </div>
     </div>
 </div>
-<div><app-map2></app-map2></div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6">
+            <app-map2></app-map2>
+        </div>
+        <div class="col-md-6">
+            <app-chart></app-chart>
+        </div>
+    </div>
 
-<app-chart></app-chart>
+
+</div>

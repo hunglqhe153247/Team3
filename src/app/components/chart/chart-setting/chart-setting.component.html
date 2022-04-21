@@ -1,8 +1,25 @@
 <div class="container">
-    <input class="add" id="add" value="{{legendTitle}}" (change)="changeLegendTitle($event)">
-    <br>
+    <h1>Setting</h1>
+
     <div>display legend:</div>
-    <input type="checkbox" [(ngModel)]="legend" (change)="changeLegend($event)" />
+    <input type="checkbox" [(ngModel)]="showLegend" (change)="changeShowLegend($event)" />
+    <div>Legend title:</div>
+    <mat-form-field class="example-form-field" appearance="fill">
+        <mat-label>Legend title:</mat-label>
+        <input matInput type="text" [(ngModel)]="legendTitle" (change)="changeLegendTitle($event)">
+        <button *ngIf="legendTitle" matSuffix mat-icon-button aria-label="Clear" (click)="legendTitle=''">
+      <mat-icon>close</mat-icon>
+    </button>
+    </mat-form-field>
+    <br>
+    <div>display XAxis:</div>
+    <input type="checkbox" [(ngModel)]="showXAxis" (change)="changeShowXAxis($event)" />
+    <div>display XAxis label:</div>
+    <input type="checkbox" [(ngModel)]="showXAxisLabel" (change)="changeShowXAxisLabel($event)" />
+    <div>display YAxis:</div>
+    <input type="checkbox" [(ngModel)]="showYAxis" (change)="changeShowYAxis($event)" />
+    <div>display YAxis label:</div>
+    <input type="checkbox" [(ngModel)]="showYAxisLabel" (change)="changeShowYAxisLabel($event)" />
 
     <button (click)="onClose()"> close </button>
 </div>

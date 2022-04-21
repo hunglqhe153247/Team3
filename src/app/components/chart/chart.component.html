@@ -1,13 +1,11 @@
-<div class="myContainer">
-    <button (click)="create($event)"><mat-icon>settings</mat-icon></button>
+<div class="myContainer position-relative" #lineChartRef [hidden]="checkHidden">
+    <button (click)="create($event)">
+    <mat-icon>settings</mat-icon>
+  </button>
+    <ngx-charts-line-chart [results]="countryDATA" [scheme]="colorScheme" [schemeType]="schemeType" [view]="[lineChartRef.offsetWidth,400]" [legend]="showLegend" [legendTitle]="legendTitle" [showYAxisLabel]="showYAxisLabel" [showXAxisLabel]="showXAxisLabel"
+        [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel" [xAxis]="showXAxis" [yAxis]="showYAxis" [legendPosition]="legendPosition" [animations]="animations" [autoScale]="autoScale" [showGridLines]="showGridLines" [curve]="curve" [rangeFillOpacity]="rangeFillOpacity"
+        [roundDomains]="roundDomains" [tooltipDisabled]="tooltipDisabled">
 
-    <table>
-        <tr>
-            <td>
-                <ngx-charts-line-chart [results]="countryDATA" [view]="view" [legend]="legend" [legendTitle]="legendTitle">
+    </ngx-charts-line-chart>
 
-                </ngx-charts-line-chart>
-            </td>
-        </tr>
-    </table>
 </div>
