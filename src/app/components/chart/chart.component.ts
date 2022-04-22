@@ -21,11 +21,11 @@ export class ChartComponent implements OnInit {
 
   colorSets: any;
   colorScheme: any;
-  schemeType = ScaleType.Ordinal;
+  schemeType: ScaleType;
 
   showLegend!: boolean;
   legendTitle: any;
-  legendPosition = LegendPosition.Below;
+  legendPosition: LegendPosition;
   countryDATA: any[];
 
   showXAxisLabel: boolean;
@@ -35,14 +35,14 @@ export class ChartComponent implements OnInit {
   xAxisLabel: string;
   yAxisLabel: string;
   animations: boolean;
-  showGridLines = true;
+  showGridLine: boolean;
   autoScale = true;
 
   rangeFillOpacity: number = 0.15;
   curve = shape.curveLinear;
 
   roundDomains: boolean = false;
-  tooltipDisabled: boolean = false;
+  tooltipDisabled: boolean;
 
   constructor(private dialog: MatDialog, private chartService: ChartService) {
     Object.assign(this, { colorSets });
@@ -58,11 +58,28 @@ export class ChartComponent implements OnInit {
     chartService.showYAxisLabelSubject.subscribe((event: any) => {
       this.showYAxisLabel = event;
     });
+    chartService.showGridLineSubject.subscribe((event: any) => {
+      this.showGridLine = event;
+    });
     chartService.showLegendSubject.subscribe((event: any) => {
       this.showLegend = event;
     });
     chartService.legendTitleSubject.subscribe((event: any) => {
       this.legendTitle = event;
+    });
+    chartService.legendPositionSubject.subscribe((event: any) => {
+      this.legendPosition = event;
+    });
+
+    chartService.tooltipDisabledSubject.subscribe((event: any) => {
+      this.tooltipDisabled = event;
+    });
+    chartService.schemeTypeSubject.subscribe((event: any) => {
+      this.schemeType = event;
+    });
+    chartService.colorSchemeSubject.subscribe((event: string) => {
+      console.log(event, 'dang o char component');
+      this.setColorScheme(event);
     });
     chartService.countryDATASubject.subscribe((event: any) => {
       this.countryDATA = event;
@@ -75,16 +92,19 @@ export class ChartComponent implements OnInit {
   ngOnInit(): void {
     this.animations = true;
     this.countryDATA = this.chartService.countryDATA;
-    this.view = this.chartService.view;
     this.legendTitle = this.chartService.legendTitle;
     this.showLegend = this.chartService.showLegend;
+    this.legendPosition = this.chartService.getLegendPosition();
     this.showXAxisLabel = this.chartService.getShowXAxisLabel();
     this.showYAxisLabel = this.chartService.getShowYAxisLabel();
     this.xAxisLabel = 'Date';
     this.yAxisLabel = 'Number of People';
     this.showXAxis = this.chartService.getShowXAxis();
     this.showYAxis = this.chartService.getShowYAxis();
-    this.setColorScheme('forest');
+    this.showGridLine = this.chartService.getShowGridLine();
+    this.setColorScheme(this.chartService.getColorScheme());
+    this.tooltipDisabled = this.chartService.getTooltipDisabled();
+    this.schemeType = this.chartService.getShemeType();
   }
 
   // config pop
@@ -101,7 +121,7 @@ export class ChartComponent implements OnInit {
     this.dialog.open(ChartSettingComponent, dialogConfig);
   }
 
-  setColorScheme(name: any) {
+  setColorScheme(name: string) {
     this.colorScheme = this.colorSets.find((s: any) => s.name === name);
   }
 }

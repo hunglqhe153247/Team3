@@ -1,13 +1,12 @@
 import { Injectable } from '@angular/core';
+import { LegendPosition } from '@swimlane/ngx-charts';
 import { Subject } from 'rxjs';
 import { AppService } from './app.service';
-
+import { ScaleType } from '@swimlane/ngx-charts';
 @Injectable({
   providedIn: 'root',
 })
 export class ChartService {
-  view!: [number, number];
-
   showXAxisLabel: boolean;
   showXAxisLabelSubject = new Subject<boolean>();
   showYAxisLabel: boolean;
@@ -16,12 +15,23 @@ export class ChartService {
   showXAxisSubject = new Subject<boolean>();
   showYAxis: boolean;
   showYAxisSubject = new Subject<boolean>();
+  showGridLine: boolean;
+  showGridLineSubject = new Subject<boolean>();
 
+  tooltipDisabled: boolean;
+  tooltipDisabledSubject = new Subject<boolean>();
+
+  legendPosition: LegendPosition;
+  legendPositionSubject = new Subject<LegendPosition>();
   showLegend!: boolean;
-  legendTitle!: string;
-
   showLegendSubject = new Subject<boolean>();
+  legendTitle!: string;
   legendTitleSubject = new Subject<string>();
+
+  schemeType!: ScaleType;
+  schemeTypeSubject = new Subject<ScaleType>();
+  colorScheme!: any;
+  colorSchemeSubject = new Subject<any>();
 
   timeseries: any;
   countryDATA!: any;
@@ -32,14 +42,17 @@ export class ChartService {
       this.timeseries = data;
     });
 
-    this.view = [900, 400];
-
     this.showLegend = true;
     this.legendTitle = 'Legend Title';
+    this.legendPosition = LegendPosition.Below;
     this.showXAxis = true;
     this.showYAxis = true;
     this.showXAxisLabel = true;
     this.showYAxisLabel = true;
+    this.showGridLine = true;
+    this.tooltipDisabled = false;
+    this.schemeType = ScaleType.Ordinal;
+    this.colorScheme = 'horizon';
   }
 
   setData(countryName: string) {
@@ -91,13 +104,6 @@ export class ChartService {
     return this.countryDATA;
   }
 
-  setView(view: [number, number]) {
-    this.view = view;
-  }
-  setShowLegend(element: boolean) {
-    this.showLegend = element;
-    this.showLegendSubject.next(this.showLegend);
-  }
   setShowYAxis(element: boolean) {
     this.showYAxis = element;
     this.showYAxisSubject.next(this.showYAxis);
@@ -128,7 +134,33 @@ export class ChartService {
   getShowYAxisLabel() {
     return this.showYAxisLabel;
   }
-  getLegend() {
+  setShowGridLine(element: boolean) {
+    this.showGridLine = element;
+    this.showGridLineSubject.next(this.showGridLine);
+  }
+  getShowGridLine() {
+    return this.showGridLine;
+  }
+
+  setLegendPosition(element: LegendPosition) {
+    this.legendPosition = element;
+    this.legendPositionSubject.next(this.legendPosition);
+  }
+  getLegendPosition() {
+    return this.legendPosition;
+  }
+  getLegendPositionIndex() {
+    if (this.legendPosition == LegendPosition.Below) {
+      return '0';
+    } else {
+      return '1';
+    }
+  }
+  setShowLegend(element: boolean) {
+    this.showLegend = element;
+    this.showLegendSubject.next(this.showLegend);
+  }
+  getShowLegend() {
     return this.showLegend;
   }
   setLegendTitle(legendTitle: string) {
@@ -137,5 +169,36 @@ export class ChartService {
   }
   getLegendTitle() {
     return this.legendTitle;
+  }
+  setTooltipDisabled(element: any) {
+    this.tooltipDisabled = element;
+    this.tooltipDisabledSubject.next(this.tooltipDisabled);
+  }
+  getTooltipDisabled() {
+    return this.tooltipDisabled;
+  }
+
+  setShemeType(element: ScaleType) {
+    this.schemeType = element;
+    this.schemeTypeSubject.next(this.schemeType);
+  }
+  getShemeType() {
+    return this.schemeType;
+  }
+  getShemeTypeIndex() {
+    if (this.schemeType == ScaleType.Ordinal) {
+      return '0';
+    } else if (this.schemeType == ScaleType.Linear) {
+      return '1';
+    } else return '-1';
+  }
+
+  setColorScheme(element: string) {
+    this.colorScheme = element;
+    this.colorSchemeSubject.next(this.colorScheme);
+    console.log('dang o service');
+  }
+  getColorScheme() {
+    return this.colorScheme;
   }
 }
