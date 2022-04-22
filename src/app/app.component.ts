@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AppService } from './service/app.service';
 import { ChartService } from './service/chart.service';
+import { WeatherService } from './service/weather.service';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +16,7 @@ export class AppComponent {
   public timeseries: any;
   public chosenCountryName:any =0;
   public currentCountry:any;
-  constructor(private appService: AppService, private chartService:ChartService) { }
+  constructor(private appService: AppService, private chartService:ChartService, private WeatherService:WeatherService) { }
 
   ngOnInit(): void {
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.

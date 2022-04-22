@@ -1,0 +1,12 @@
+<div class="text-center border" id="weather">
+  <div class="border p-2">
+    <h2>{{ weather.location.country }}</h2>
+    <p>Local time: {{ weather.location.localtime | date:"short"}}, </p>
+  </div>
+  <div class="p-2"><h1>{{ weather.current.condition.text }}</h1>
+  <img src="{{ weather.current.condition.icon }}" />
+  <p class="mt-3">Temp: {{ weather.current.temp_c }} °C - ({{ weather.current.temp_f }} °F)</p>
+  <p>Wind Speed: {{ weather.current.wind_kph }} (kph)</p>
+  <p>Humidity: {{ weather.current.humidity }}</p></div>
+  
+</div>
