@@ -16,12 +16,14 @@ import { MatIconModule } from '@angular/material/icon';
 import { ChartSettingComponent } from './components/chart/chart-setting/chart-setting.component';
 import { Map2Component } from './components/map2/map2.component';
 import { MatInputModule } from '@angular/material/input';
+import { WeatherComponent } from './components/weather/weather.component';
 @NgModule({
   declarations: [
     AppComponent,
     ChartComponent,
     ChartSettingComponent,
     Map2Component,
+    WeatherComponent,
   ],
   imports: [
     BrowserModule,

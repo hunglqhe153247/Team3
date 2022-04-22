@@ -94,7 +94,8 @@
         <mat-form-field appearance="fill">
             <mat-label>Choose an option</mat-label>
             <mat-select [(ngModel)]="chosenCountryName" (ngModelChange)="selectCountryHandler()">
-                <mat-option *ngFor="let region of regions" value={{region.countryregion}}>{{ region.countryregion }}
+                <mat-option selected value="0">Select country</mat-option>
+                <mat-option *ngFor="let region of regions" value="{{ region.countryregion }}">{{ region.countryregion }}
                 </mat-option>
             </mat-select>
         </mat-form-field>
@@ -173,7 +174,7 @@
                                     Fatality rate
                                 </div>
                                 <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                    {{ currentCountry.deaths / currentCountry.confirmed | percent:".2" }}
+                                    {{ currentCountry.deaths / currentCountry.confirmed | percent: ".2" }}
                                 </div>
                             </div>
                             <div class="col-auto">
@@ -186,15 +187,17 @@
         </div>
     </div>
 </div>
+<div class="container">
+    <app-map2></app-map2>
+</div>
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-6">
-            <app-map2></app-map2>
-        </div>
-        <div class="col-md-6">
             <app-chart></app-chart>
         </div>
+        <div class="col-md-6">
+
+            <app-weather></app-weather>
+        </div>
     </div>
-
-
 </div>

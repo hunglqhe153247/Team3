@@ -116,7 +116,7 @@ export class ChartComponent implements OnInit {
     dialogConfig.height = '100%';
     dialogConfig.position = {
       top: '0',
-      left: '0',
+      right: '0',
     };
     this.dialog.open(ChartSettingComponent, dialogConfig);
   }

@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { AppService } from './service/app.service';
 import { ChartService } from './service/chart.service';
+import { WeatherService } from './service/weather.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
   title = 'CoronaInfo';
@@ -13,32 +14,36 @@ export class AppComponent {
   public regions: any;
   public country: any;
   public timeseries: any;
-  public chosenCountryName:any =0;
-  public currentCountry:any;
-  constructor(private appService: AppService, private chartService:ChartService) { }
+  public chosenCountryName: any = 0;
+  public currentCountry: any;
+  constructor(
+    private appService: AppService,
+    private chartService: ChartService,
+    private WeatherService: WeatherService
+  ) {}
 
   ngOnInit(): void {
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
     //Add 'implements OnInit' to the class.
     this.appService.getStats().subscribe((data) => {
       this.stats = data;
-    })
+    });
     this.appService.getRegions().subscribe((data) => {
       this.regions = data;
-    })
+    });
     this.appService.getTimeseries().subscribe((data) => {
       this.timeseries = data;
-    })
+    });
 
     // initiate current country defaut value
-    this.currentCountry={
-      "countryregion":'',
-      "lastupdate":'',
-      "location":{},
-      "countrycode":{},
-      "confirmed":"",
-      "deaths":"",
-      "recovered":""
+    this.currentCountry = {
+      countryregion: '',
+      lastupdate: '',
+      location: {},
+      countrycode: {},
+      confirmed: '',
+      deaths: '',
+      recovered: '',
     };
   }
 
@@ -47,10 +52,11 @@ export class AppComponent {
   }
 
   // set current country = chosen country name
-  selectCountryHandler(){
-    this.currentCountry=this.regions.filter((event:any)=>{
-      return event.countryregion==this.chosenCountryName
+  selectCountryHandler() {
+    this.currentCountry = this.regions.filter((event: any) => {
+      return event.countryregion == this.chosenCountryName;
     })[0];
     this.chartService.setData(this.chosenCountryName);
+    this.WeatherService.setCountry(this.chosenCountryName);
   }
 }
