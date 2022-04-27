@@ -1,6 +1,6 @@
 <div class="text-center border" id="weather" *ngIf="undefined !== weather">
     <div class="border p-2">
-        <h2>{{ weather.location.country }}</h2>
+        <h2>{{ weather.location.name }}</h2>
         <p>Local time: {{ weather.location.localtime | date:"short"}}, </p>
     </div>
     <div class="p-2">
