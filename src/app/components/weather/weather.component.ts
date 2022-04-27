@@ -7,26 +7,15 @@ import { WeatherService } from 'src/app/service/weather.service';
   styleUrls: ['./weather.component.css'],
 })
 export class WeatherComponent implements OnInit {
-  checkHidden: boolean = true;
-  weather: any = [];
-  country: any;
-  constructor(private WeatherService: WeatherService) {
-    this.country = this.WeatherService.getCountry();
-    this.WeatherService.countrySubject.subscribe((data) => {
-      this.country = data;
-      this.checkHidden = false;
-      this.WeatherService.getWeather(this.country).subscribe((data) => {
-        this.weather = data;
-        console.log(this.weather);
-      });
-    });
-    this.WeatherService.getWeather(this.country).subscribe((data) => {
-      this.weather = data;
-      console.log(this.weather);
-    });
-  }
+  constructor(private weatherService: WeatherService) {}
+
+  weather!: any;
 
   ngOnInit(): void {
-    console.log(this.WeatherService.getWeather('VietNam'));
+    this.weatherService.weatherSubject.subscribe((data) => {
+      if (data !== undefined) {
+        this.weather = data;
+      }
+    });
   }
 }

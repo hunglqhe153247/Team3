@@ -57,6 +57,6 @@ export class AppComponent {
       return event.countryregion == this.chosenCountryName;
     })[0];
     this.chartService.setData(this.chosenCountryName);
-    this.WeatherService.setCountry(this.chosenCountryName);
+    this.WeatherService.getWeather(this.chosenCountryName);
   }
 }

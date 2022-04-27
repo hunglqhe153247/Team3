@@ -92,9 +92,8 @@
     <div class="regional">
         <span>Regional</span>
         <mat-form-field appearance="fill">
-            <mat-label>Choose an option</mat-label>
+            <mat-label>Select Country</mat-label>
             <mat-select [(ngModel)]="chosenCountryName" (ngModelChange)="selectCountryHandler()">
-                <mat-option selected value="0">Select country</mat-option>
                 <mat-option *ngFor="let region of regions" value="{{ region.countryregion }}">{{ region.countryregion }}
                 </mat-option>
             </mat-select>

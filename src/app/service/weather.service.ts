@@ -1,36 +1,27 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class WeatherService {
-  country!: string;
-  countrySubject = new Subject<string>();
-  constructor(private http: HttpClient) {
-    this.country = 'VietNam';
-  }
-  private httpOption = {
-    headers: new HttpHeaders({
-      Accept: 'application/json',
-    }),
-  };
-  private apiKey = 'd825a11828e5447cb83171251222104';
-  public getWeather(location: string) {
-    let weatherapiUrl =
-      'http://api.weatherapi.com/v1/forecast.json?key=' +
-      this.apiKey +
-      '&q=' +
-      location +
-      '&days=5&aqi=no&alerts=yes';
-    return this.http.get<any>(weatherapiUrl, this.httpOption);
-  }
-  setCountry(element: string) {
-    this.country = element;
-    this.countrySubject.next(this.country);
-  }
-  getCountry() {
-    return this.country;
+  constructor(private http: HttpClient) {}
+
+  weather!: any;
+  weatherSubject: BehaviorSubject<any> = new BehaviorSubject<any>(this.weather);
+
+  private BaseUrl =
+    'https://api.weatherapi.com/v1/current.json?key=0cd42df25e9542969c0134606222704';
+
+  getWeather(country: string) {
+    let currentWeather!: any;
+    this.weatherSubject.next(currentWeather);
+    this.http
+      .get(`${this.BaseUrl}&q=${country}&aqi=yes`)
+      .subscribe((data: any) => {
+        this.weather = data;
+        this.weatherSubject.next(this.weather);
+      });
   }
 }
